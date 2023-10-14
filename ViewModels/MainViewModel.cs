@@ -1,12 +1,11 @@
-﻿namespace SongPrompter.ViewModels
-{
-    using CommunityToolkit.Maui.Storage;
-    using CommunityToolkit.Mvvm.ComponentModel;
-    using CommunityToolkit.Mvvm.Input;
-    using System.ComponentModel;
-    using System.Diagnostics;
-    using System.Threading;
+﻿using CommunityToolkit.Maui.Storage;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
+using SongPrompter.Services;
+
+namespace SongPrompter.ViewModels
+{
     public partial class MainViewModel : ObservableObject
     {
         [ObservableProperty]

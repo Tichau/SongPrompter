@@ -2,9 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SongPrompter.MainPage"
-             xmlns:local="clr-namespace:SongPrompter"
-             xmlns:viewmodel="clr-namespace:SongPrompter.ViewModels"
-             x:DataType="viewmodel:MainViewModel"
+             xmlns:models="clr-namespace:SongPrompter.Models"
+             xmlns:viewmodels="clr-namespace:SongPrompter.ViewModels"
+             x:DataType="viewmodels:MainViewModel"
              x:Name="mainPage">
     <ScrollView x:Name="scrollView">
         <VerticalStackLayout
@@ -20,7 +20,7 @@
 
             <ListView ItemsSource="{Binding DataService.Playlists}">
                 <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="local:Playlist">
+                    <DataTemplate x:DataType="models:Playlist">
                         <ViewCell>
                             <HorizontalStackLayout HorizontalOptions="Fill">
                                 <Button 

@@ -1,6 +1,7 @@
-﻿using Microsoft.Maui.Dispatching;
-using SongPrompter.ViewModels;
+﻿using SongPrompter.ViewModels;
 using System.Diagnostics;
+
+using SongPrompter.Models;
 
 namespace SongPrompter
 {

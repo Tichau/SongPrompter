@@ -1,11 +1,10 @@
-﻿namespace SongPrompter.ViewModels
-{
-    using CommunityToolkit.Mvvm.ComponentModel;
-    using CommunityToolkit.Mvvm.Input;
-    using System;
-    using System.ComponentModel;
-    using System.Diagnostics;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System.Diagnostics;
 
+using SongPrompter.Models;
+
+namespace SongPrompter.ViewModels
+{
     public partial class SongViewModel : ObservableObject
     {
         [ObservableProperty]

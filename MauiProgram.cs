@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
+
+using SongPrompter.Services;
 using SongPrompter.ViewModels;
 
 namespace SongPrompter

@@ -1,52 +1,16 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
-namespace SongPrompter
+using SongPrompter.Models;
+
+namespace SongPrompter.Services
 {
     public interface IDataService
     {
         ObservableCollection<Playlist> Playlists { get; }
 
         void LoadPlaylist(string path);
-    }
-
-    public partial class Playlist : ObservableObject
-    {
-        [ObservableProperty]
-        private string name;
-        [ObservableProperty]
-        private string path;
-        [ObservableProperty]
-        private Song[] songs;
-    }
-
-    public partial class Song : ObservableObject
-    {
-        [ObservableProperty]
-        public string name;
-        [ObservableProperty]
-        public string artist;
-        
-        [ObservableProperty]
-        public int bpm;
-        [ObservableProperty]
-        public int beatPerMeasure;
-        [ObservableProperty]
-        public int beatSubdivision;
-        
-        [ObservableProperty]
-        public string key;
-
-        [ObservableProperty]
-        public string[] lyrics;
     }
 
     internal partial class DataService : ObservableObject, IDataService
