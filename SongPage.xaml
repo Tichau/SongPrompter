@@ -6,14 +6,14 @@
              x:DataType="viewmodels:SongViewModel">
     <ScrollView x:Name="scrollView">
         <VerticalStackLayout
-            Spacing="25"
+            Spacing="10"
             Padding="30,0"
             VerticalOptions="Start">
 
             <Button
                 Text="Start"
-                FontSize="32"
-                Clicked="StartButton_Clicked" />
+                FontSize="32" 
+                Command="{Binding StartCommand}" />
 
             <Label
                 Text="{Binding CurrentSong.Name}"
@@ -27,15 +27,21 @@
                 FontSize="18"
                 HorizontalOptions="Start" />
             
+            <Label
+                Text="{Binding Infos}"
+                FontSize="14"
+                FontAttributes="Italic"
+                HorizontalOptions="Start" />
+            
             <HorizontalStackLayout Margin="0,0,0,20" Padding="-30,0,0,0">
 
                 <Label 
                     x:Name="metronome"
-                    Text="{Binding CurrentSong.Bpm}"
+                    Text="{Binding Beat}"
                     HorizontalTextAlignment="Center"
-                    TextColor="LightGrey"
-                    BackgroundColor="Gray"
-                    WidthRequest="30" />
+                    Style="{Binding MetronomeStyle}"
+                    WidthRequest="10"
+                    Margin="10,0,10,0" />
                 
                 <Label
                     x:Name="lyrics"
