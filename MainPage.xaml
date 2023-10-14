@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SongPrompter.MainPage"
+             xmlns:local="clr-namespace:SongPrompter"
+             xmlns:viewmodel="clr-namespace:SongPrompter.ViewModels"
+             x:DataType="viewmodel:MainViewModel"
+             x:Name="mainPage">
+    <ScrollView x:Name="scrollView">
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Start">
+
+            <Label
+                Text="Song Prompter"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                HorizontalOptions="Center" />
+
+            <ListView ItemsSource="{Binding DataService.Playlists}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="local:Playlist">
+                        <ViewCell>
+                            <HorizontalStackLayout HorizontalOptions="Fill">
+                                <Button 
+                                    Text="Play"
+                                    Command="{Binding Path=BindingContext.PlayCommand, Source={x:Reference Name=mainPage}}"
+                                    CommandParameter="{Binding .}"
+                                    Margin="0,0,20,0" />
+                                
+                                <Label 
+                                    Text="{Binding Name}"
+                                    FontSize="32" />
+                            </HorizontalStackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button 
+                Text="Add Playlist"
+                Command="{Binding AddPlaylistCommand}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

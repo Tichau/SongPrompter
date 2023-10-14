@@ -1,0 +1,106 @@
+# Sympathy For The Devil
+
+## The Rolling Stones
+
+> bpm: 114
+> metre: 4/4
+> key: A
+
+```text
+[Verse 1#10]
+Please allow me to introduce myself
+I'm a man of wealth and taste
+I've been around for a long, long year
+Stole many a man's soul to waste
+
+And I was 'round when Jesus Christ
+Had his moment of doubt and pain
+Made damn sure that Pilate
+Washed his hands and sealed his fate
+
+[Chorus#28]
+Pleased to meet you
+Hope you guess my name
+But what's puzzling you
+Is the nature of my game
+
+[Verse 2#36]
+I stuck around St. Petersburg
+When I saw it was a time for a change
+Killed the czar and his ministers
+Anastasia screamed in vain
+
+I rode a tank
+Held a general's rank
+When the blitzkrieg raged
+And the bodies stank
+
+[Chorus#50]
+Pleased to meet you
+Hope you guess my name, oh yeah
+Ah, what's puzzling you
+Is the nature of my game, oh yeah
+
+[Verse 3#58]
+I watched with glee
+While your kings and queens
+Fought for ten decades
+For the gods they made
+
+I shouted out
+Who killed the Kennedys?
+When after all
+It was you and me
+
+Let me please introduce myself
+I'm a man of wealth and taste
+And I laid traps for troubadours
+Who get killed before they reached Bombay
+
+[Chorus#75]
+Pleased to meet you
+Hope you guessed my name, oh yeah
+But what's puzzling you
+Is the nature of my game, oh yeah, get down, baby
+
+Pleased to meet you
+Hope you guessed my name, oh yeah
+But what's confusing you
+Is just the nature of my game, mm yeah
+
+[Verse 4]
+Just as every cop is a criminal
+And all the sinners saints
+As heads is tails
+Just call me Lucifer
+'Cause I'm in need of some restraint
+
+So if you meet me
+Have some courtesy
+Have some sympathy, and some taste
+Use all your well-learned politesse
+Or I'll lay your soul to waste, mm yeah
+
+[Chorus]
+Pleased to meet you
+Hope you guessed my name, mm yeah
+
+But what's puzzling you
+Is the nature of my game, mm mean it, get down
+
+Oh yeah, get on down
+Oh yeah
+
+Oh yeah
+
+Tell me baby, what's my name
+Tell me honey, can ya guess my name
+Tell me baby, what's my name
+I tell you one time, you're to blame
+
+Oh, right
+
+What's my name
+Tell me, baby, what's my name
+Tell me, sweetie, what's my name
+```
