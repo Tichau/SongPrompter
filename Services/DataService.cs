@@ -25,11 +25,14 @@ namespace SongPrompter.Services
 
         public DataService() 
         {
-            string playlistPreferencesString = Preferences.Get(DataService.PlaylistPreferencesName, string.Empty);
-            string[] playlistPaths = playlistPreferencesString.Split(';');
-            foreach (var path in playlistPaths)
+            string playlistPreferencesString = Preferences.Get(DataService.PlaylistPreferencesName, null);
+            if (playlistPreferencesString != null)
             {
-                this.LoadPlaylist(path);
+                string[] playlistPaths = playlistPreferencesString.Split(';');
+                foreach (var path in playlistPaths)
+                {
+                    this.LoadPlaylist(path);
+                }
             }
         }
 
