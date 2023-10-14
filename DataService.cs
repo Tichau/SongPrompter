@@ -21,9 +21,11 @@ namespace SongPrompter
     public partial class Playlist : ObservableObject
     {
         [ObservableProperty]
-        public string name;
+        private string name;
         [ObservableProperty]
-        public Song[] songs;
+        private string path;
+        [ObservableProperty]
+        private Song[] songs;
     }
 
     public partial class Song : ObservableObject
@@ -49,7 +51,9 @@ namespace SongPrompter
 
     internal partial class DataService : ObservableObject, IDataService
     {
-        ObservableCollection<Playlist> playlists = new ObservableCollection<Playlist>();
+        private const string PlaylistPreferencesName = "playlists";
+
+        private ObservableCollection<Playlist> playlists = new ObservableCollection<Playlist>();
 
         private readonly Regex titleRegex = new Regex(@"^#\s(?<title>.*)");
         private readonly Regex artistRegex = new Regex(@"^##\s(?<artist>.*)");
@@ -57,6 +61,12 @@ namespace SongPrompter
 
         public DataService() 
         {
+            string playlistPreferencesString = Preferences.Get(DataService.PlaylistPreferencesName, string.Empty);
+            string[] playlistPaths = playlistPreferencesString.Split(';');
+            foreach (var path in playlistPaths)
+            {
+                this.LoadPlaylist(path);
+            }
         }
 
         public ObservableCollection<Playlist> Playlists => this.playlists;
@@ -104,11 +114,15 @@ namespace SongPrompter
                     Playlist playlist = new Playlist()
                     {
                         Name = folder.Name,
+                        Path = path,
                         Songs = songs.ToArray(),
                     };
 
                     this.playlists.Add(playlist);
                     this.OnPropertyChanged(nameof(this.Playlists));
+
+                    string playlistPreferencesString = this.Playlists.Select(playlist => playlist.Path).Aggregate((left, right) => $"{left};{right}");
+                    Preferences.Set(DataService.PlaylistPreferencesName, playlistPreferencesString);
                 }
                 else
                 {
