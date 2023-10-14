@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
-
+using Microsoft.Maui.Handlers;
 using SongPrompter.Services;
 using SongPrompter.ViewModels;
 
@@ -20,12 +20,19 @@ namespace SongPrompter
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-            builder.Services.AddSingleton<MainPage>();
-            builder.Services.AddSingleton<MainViewModel>();
-            builder.Services.AddSingleton<SongPage>();
-            builder.Services.AddSingleton<SongViewModel>();
+            // Workaround for issue: https://github.com/dotnet/maui/issues/11662
+            builder.ConfigureMauiHandlers(_ =>
+                {
+                    LabelHandler.Mapper.AppendToMapping(nameof(View.BackgroundColor), (handler, View) => handler.UpdateValue(nameof(IView.Background)));
+                    ButtonHandler.Mapper.AppendToMapping(nameof(View.BackgroundColor), (handler, View) => handler.UpdateValue(nameof(IView.Background)));
+                });
 
-            builder.Services.AddSingleton<IDataService, DataService>();
+            builder.Services
+                .AddSingleton<IDataService, DataService>()
+                .AddSingleton<MainPage>()
+                .AddSingleton<MainViewModel>()
+                .AddSingleton<SongPage>()
+                .AddSingleton<SongViewModel>();
 
 #if DEBUG
             builder.Logging.AddDebug();
