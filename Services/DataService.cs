@@ -88,8 +88,7 @@ namespace SongPrompter.Services
                     this.playlists.Add(playlist);
                     this.OnPropertyChanged(nameof(this.Playlists));
 
-                    string playlistPreferencesString = this.Playlists.Select(playlist => playlist.Path).Aggregate((left, right) => $"{left};{right}");
-                    Preferences.Set(DataService.PlaylistPreferencesName, playlistPreferencesString);
+                    this.SavePlaylistPreferences();
                 }
                 else
                 {
@@ -99,6 +98,27 @@ namespace SongPrompter.Services
             else
             {
                 Console.WriteLine($"Error: {path} does not exists.");
+            }
+        }
+
+        public void RemovePlaylist(Playlist playlist)
+        {
+            if (this.playlists.Remove(playlist))
+            {
+                this.SavePlaylistPreferences();
+            }
+        }
+
+        private void SavePlaylistPreferences()
+        {
+            if (this.Playlists.Count > 0)
+            {
+                string playlistPreferencesString = this.Playlists.Select(playlist => playlist.Path).Aggregate((left, right) => $"{left};{right}");
+                Preferences.Set(DataService.PlaylistPreferencesName, playlistPreferencesString);
+            }
+            else
+            {
+                Preferences.Clear(DataService.PlaylistPreferencesName);
             }
         }
 

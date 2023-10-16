@@ -28,10 +28,16 @@
                                     Command="{Binding Path=BindingContext.PlayCommand, Source={x:Reference Name=mainPage}}"
                                     CommandParameter="{Binding .}"
                                     Margin="0,0,20,0" />
-                                
+
                                 <Label 
                                     Text="{Binding Name}"
                                     FontSize="32" />
+
+                                <Button 
+                                    Text="Delete"
+                                    Command="{Binding Path=BindingContext.DeleteCommand, Source={x:Reference Name=mainPage}}"
+                                    CommandParameter="{Binding .}"
+                                    Margin="80,0,0,0" />
                             </HorizontalStackLayout>
                         </ViewCell>
                     </DataTemplate>

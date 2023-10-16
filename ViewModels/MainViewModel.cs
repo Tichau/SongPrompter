@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Maui.Storage;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-
+using SongPrompter.Models;
 using SongPrompter.Services;
 
 namespace SongPrompter.ViewModels
@@ -25,6 +25,12 @@ namespace SongPrompter.ViewModels
             };
 
             Shell.Current.GoToAsync("song", data);
+        }
+
+        [RelayCommand]
+        private void Delete(object playlist)
+        {
+            this.DataService.RemovePlaylist((Playlist)playlist);
         }
 
         [RelayCommand]
