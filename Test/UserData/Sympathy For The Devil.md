@@ -63,12 +63,15 @@ Hope you guessed my name, oh yeah
 But what's puzzling you
 Is the nature of my game, oh yeah, get down, baby
 
+[Solo#83]
+
+[Chorus#101]
 Pleased to meet you
 Hope you guessed my name, oh yeah
 But what's confusing you
 Is just the nature of my game, mm yeah
 
-[Verse 4]
+[Verse 4#109]
 Just as every cop is a criminal
 And all the sinners saints
 As heads is tails
@@ -81,13 +84,14 @@ Have some sympathy, and some taste
 Use all your well-learned politesse
 Or I'll lay your soul to waste, mm yeah
 
-[Chorus]
+[Chorus#126]
 Pleased to meet you
 Hope you guessed my name, mm yeah
 
 But what's puzzling you
 Is the nature of my game, mm mean it, get down
 
+[Outro#132]
 Oh yeah, get on down
 Oh yeah
 
