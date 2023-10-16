@@ -25,5 +25,19 @@ namespace SongPrompter
                 OnPropertyChanged();
             }
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            DeviceDisplay.Current.KeepScreenOn = true;
+        }
+
+        protected override void OnDisappearing()
+        {
+            DeviceDisplay.Current.KeepScreenOn = false;
+
+            base.OnDisappearing();
+        }
     }
 }
