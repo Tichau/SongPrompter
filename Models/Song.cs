@@ -20,6 +20,6 @@ namespace SongPrompter.Models
         private string key;
 
         [ObservableProperty]
-        private string[] lyrics;
+        private Verse[] verses;
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 
 using SongPrompter.Models;
+using System.Text;
 
 namespace SongPrompter.Services
 {
@@ -11,6 +12,8 @@ namespace SongPrompter.Services
         ObservableCollection<Playlist> Playlists { get; }
 
         void LoadPlaylist(string path);
+
+        void RemovePlaylist(Playlist playlist);
     }
 
     internal partial class DataService : ObservableObject, IDataService
@@ -21,7 +24,8 @@ namespace SongPrompter.Services
 
         private readonly Regex titleRegex = new Regex(@"^#\s(?<title>.*)");
         private readonly Regex artistRegex = new Regex(@"^##\s(?<artist>.*)");
-        private readonly Regex metaDataRegex = new Regex(@"^>\s(?<key>.*)\s*:\s*(?<value>.*)");
+        private readonly Regex metadataRegex = new Regex(@"^>\s(?<key>.*)\s*:\s*(?<value>.*)");
+        private readonly Regex verseMetadataRegex = new Regex(@"\[(?<name>[\w\s]+)#(?<measure>\d+)\]");
 
         public DataService() 
         {
@@ -129,53 +133,85 @@ namespace SongPrompter.Services
             using (FileStream reader = File.OpenRead(filePath))
             using (StreamReader textReader = new StreamReader(reader))
             {
-                var lyrics = new List<string>();
+                var verses = new List<Verse>();
                 var parseLyrics = false;
                 while (!textReader.EndOfStream)
                 {
                     string line = textReader.ReadLine();
-                    if (this.titleRegex.IsMatch(line))
+                    if (parseLyrics)
                     {
-                        song.Name = this.titleRegex.Match(line).Groups["title"].Value;
-                    }
-                    else if (this.artistRegex.IsMatch(line))
-                    {
-                        song.Artist = this.artistRegex.Match(line).Groups["artist"].Value;
-                    }
-                    else if (this.metaDataRegex.IsMatch(line))
-                    {
-                        Match match = this.metaDataRegex.Match(line);
-                        switch (match.Groups["key"].Value)
+                        if (this.verseMetadataRegex.IsMatch(line))
                         {
-                            case "bpm":
-                                song.Bpm = int.Parse(match.Groups["value"].Value);
-                                break;
+                            Match match = this.verseMetadataRegex.Match(line);
+                            verses.Add(new Verse()
+                            {
+                                Name = match.Groups["name"].Value,
+                                StartMeasure = int.Parse(match.Groups["measure"].Value),
+                                Lyrics = string.Empty,
+                            });
+                        }
+                        else
+                        {
+                            if (verses.Count == 0)
+                            {
+                                verses.Add(new Verse()
+                                {
+                                    Name = string.Empty,
+                                    StartMeasure = 0,
+                                    Lyrics = string.Empty,
+                                });
+                            }
 
-                            case "metre":
-                                string[] values = match.Groups["value"].Value.Split('/');
-                                song.BeatPerMeasure = int.Parse(values[0]);
-                                song.BeatSubdivision = int.Parse(values[1]);
-                                break;
+                            Verse verse = verses.Last();
+                            if (!string.IsNullOrEmpty(verse.Lyrics))
+                            {
+                                verse.Lyrics += $"\n";
+                            }
 
-                            case "key":
-                                song.Key = match.Groups["value"].Value;
-                                break;
-
-                            default:
-                                throw new Exception($"Unknown metadata: {match.Groups["key"].Value}");
+                            verse.Lyrics += line;
                         }
                     }
-                    else if (line.StartsWith("```"))
+                    else
                     {
-                        parseLyrics = !parseLyrics;
-                    }
-                    else if (parseLyrics)
-                    {
-                        lyrics.Add(line);
+                        if (this.titleRegex.IsMatch(line))
+                        {
+                            song.Name = this.titleRegex.Match(line).Groups["title"].Value;
+                        }
+                        else if (this.artistRegex.IsMatch(line))
+                        {
+                            song.Artist = this.artistRegex.Match(line).Groups["artist"].Value;
+                        }
+                        else if (this.metadataRegex.IsMatch(line))
+                        {
+                            Match match = this.metadataRegex.Match(line);
+                            switch (match.Groups["key"].Value)
+                            {
+                                case "bpm":
+                                    song.Bpm = int.Parse(match.Groups["value"].Value);
+                                    break;
+
+                                case "metre":
+                                    string[] values = match.Groups["value"].Value.Split('/');
+                                    song.BeatPerMeasure = int.Parse(values[0]);
+                                    song.BeatSubdivision = int.Parse(values[1]);
+                                    break;
+
+                                case "key":
+                                    song.Key = match.Groups["value"].Value;
+                                    break;
+
+                                default:
+                                    throw new Exception($"Unknown metadata: {match.Groups["key"].Value}");
+                            }
+                        }
+                        else if (line.StartsWith("```"))
+                        {
+                            parseLyrics = !parseLyrics;
+                        }
                     }
                 }
 
-                song.Lyrics = lyrics.ToArray();
+                song.Verses = verses.ToArray();
             }
 
             return song;

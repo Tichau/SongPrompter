@@ -1,5 +1,4 @@
 ﻿using SongPrompter.ViewModels;
-using System.Diagnostics;
 
 using SongPrompter.Models;
 
@@ -10,10 +9,15 @@ namespace SongPrompter
     {
         public const string PlaylistParameterName = "playlist";
 
+        public double[] yVersesPositions;
+
         public SongPage(SongViewModel viewModel)
         {
             InitializeComponent();
             this.BindingContext = viewModel;
+
+            viewModel.VerseChanged += this.ViewModel_VerseChanged;
+            viewModel.SongStarted += this.ViewModel_SongStarted;
         }
 
         public Playlist Playlist
@@ -21,7 +25,13 @@ namespace SongPrompter
             get => ((SongViewModel)this.BindingContext).Playlist;
             set
             {
-                ((SongViewModel)this.BindingContext).Bind(value);
+                SongViewModel viewModel = ((SongViewModel)this.BindingContext);
+                viewModel.Bind(value);
+                if (viewModel.CurrentSong.BeatSubdivision != 4 || viewModel.CurrentSong.BeatPerMeasure <= 0)
+                {
+                    DisplayAlert("Warning", $"Unsupported time signature: {viewModel.CurrentSong.BeatPerMeasure}/{viewModel.CurrentSong.BeatSubdivision}", "OK");
+                }
+
                 OnPropertyChanged();
             }
         }
@@ -38,6 +48,31 @@ namespace SongPrompter
             DeviceDisplay.Current.KeepScreenOn = false;
 
             base.OnDisappearing();
+        }
+
+        private void ViewModel_SongStarted(Song newSong)
+        {
+            // Compute Y position for each verse.
+            VisualElement[] elements = this.verses.GetVisualTreeDescendants().Where(element => element is VerticalStackLayout).Cast<VisualElement>().ToArray();
+            this.yVersesPositions = new double[newSong.Verses.Length];
+
+            VisualElement element = elements[0];
+            this.yVersesPositions[0] = 0.0;
+            while (element != null)
+            {
+                this.yVersesPositions[0] += element.Y;
+                element = element.Parent as VisualElement;
+            }
+
+            for (int index = 1; index < this.yVersesPositions.Length; index++)
+            {
+                this.yVersesPositions[index] = this.yVersesPositions[index - 1] + elements[index - 1].Height;
+            }
+        }
+
+        private void ViewModel_VerseChanged(int newVerseId)
+        {
+            this.Dispatcher.Dispatch(() => this.scrollView.ScrollToAsync(0.0, this.yVersesPositions[newVerseId], true));
         }
     }
 }

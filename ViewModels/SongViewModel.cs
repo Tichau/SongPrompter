@@ -24,17 +24,25 @@ namespace SongPrompter.ViewModels
         private string infos;
 
         [ObservableProperty]
-        private string lyrics;
-
-        [ObservableProperty]
         private Style metronomeStyle;
 
         [ObservableProperty]
         private int beat;
+        [ObservableProperty]
+        private int measure;
+
+        private bool started = false;
+        private int currentVerseIndex;
 
         public int nextSongIndex = 0;
 
         private readonly BackgroundWorker backgroundWorker;
+
+        public delegate void SongStartedEventHandler(Song newSong);
+        public delegate void VerseChangedEventHandler(int newVerseId);
+
+        public event VerseChangedEventHandler VerseChanged;
+        public event SongStartedEventHandler SongStarted;
 
         public SongViewModel()
         {
@@ -54,6 +62,11 @@ namespace SongPrompter.ViewModels
             };
 
             this.backgroundWorker.DoWork += this.BackgroundWorker_DoWork;
+
+            this.CurrentSong = new Song()
+            {
+                Verses = new Verse[0]
+            };
         }
 
         internal void Bind(Playlist playlist)
@@ -76,7 +89,7 @@ namespace SongPrompter.ViewModels
 
                 this.CurrentSong = this.Playlist.Songs[this.nextSongIndex];
                 this.Infos = $"{this.CurrentSong.Bpm} bpm    Signature: {this.CurrentSong.BeatPerMeasure}/{this.CurrentSong.BeatSubdivision}    Key: {this.CurrentSong.Key}";
-                this.Lyrics = this.CurrentSong.Lyrics.Aggregate((left, right) => left + '\n' + right);
+
                 this.nextSongIndex++;
 
                 this.backgroundWorker.RunWorkerAsync();
@@ -109,16 +122,23 @@ namespace SongPrompter.ViewModels
                     }
 
                     this.MetronomeStyle = this.flashStyle;
-                    this.Beat++;
+
+                    if (this.started)
+                    {
+                        this.Beat++;
+                        this.Measure = this.Beat / this.CurrentSong.BeatPerMeasure;
+
+                        if (this.CurrentSong.Verses.Length > currentVerseIndex + 1 &&
+                            this.Measure >= this.CurrentSong.Verses[currentVerseIndex + 1].StartMeasure)
+                        {
+                            currentVerseIndex++;
+                            this.VerseChanged?.Invoke(currentVerseIndex);
+                        }
+                    }
 
                     Thread.Sleep(this.flashDuration);
 
                     this.MetronomeStyle = this.defaultStyle;
-
-                    //if (this.scroll)
-                    //{
-                    //    Dispatcher.Dispatch(scrollAction);
-                    //}
                 }
                 else
                 {
@@ -134,7 +154,12 @@ namespace SongPrompter.ViewModels
         [RelayCommand]
         private async void Start()
         {
+            this.started = true;
             this.Beat = 0;
+            this.Measure = 0;
+            this.currentVerseIndex = -1;
+
+            this.SongStarted?.Invoke(this.CurrentSong);
         }
     }
 }
