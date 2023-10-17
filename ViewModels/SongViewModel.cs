@@ -34,9 +34,10 @@ namespace SongPrompter.ViewModels
         private bool started = false;
         private int currentVerseIndex;
 
-        public int nextSongIndex = 0;
+        public int currentSongIndex = 0;
 
-        private readonly BackgroundWorker backgroundWorker;
+        private BackgroundWorker backgroundWorker;
+        private AutoResetEvent resetEvent = new AutoResetEvent(false);
 
         public delegate void SongStartedEventHandler(Song newSong);
         public delegate void VerseChangedEventHandler(int newVerseId);
@@ -56,13 +57,6 @@ namespace SongPrompter.ViewModels
                 this.flashStyle = (Style)style;
             }
 
-            this.backgroundWorker = new BackgroundWorker
-            {
-                WorkerSupportsCancellation = true
-            };
-
-            this.backgroundWorker.DoWork += this.BackgroundWorker_DoWork;
-
             this.CurrentSong = new Song()
             {
                 Verses = new Verse[0]
@@ -72,27 +66,45 @@ namespace SongPrompter.ViewModels
         internal void Bind(Playlist playlist)
         {
             this.Playlist = playlist;
-            this.nextSongIndex = 0;
-            this.LoadNextSong();
+            this.LoadSong(0);
         }
 
-        internal void LoadNextSong()
+        internal void Unbind()
+        {
+            this.Playlist = null;
+            this.StopMetronome();
+        }
+
+        internal void LoadSong(int songIndex)
         {
             Debug.Assert(this.Playlist != null);
-            if (this.nextSongIndex < this.Playlist.Songs.Length)
+            Debug.Assert(songIndex >= 0 && songIndex < this.Playlist.Songs.Length);
+            this.StopMetronome();
+
+            this.CurrentSong = this.Playlist.Songs[songIndex];
+            this.Infos = $"{this.CurrentSong.Bpm} bpm    Signature: {this.CurrentSong.BeatPerMeasure}/{this.CurrentSong.BeatSubdivision}    Key: {this.CurrentSong.Key}";
+
+            this.currentSongIndex = songIndex;
+            this.StartMetronome();
+        }
+
+        private void StartMetronome()
+        {
+            this.backgroundWorker = new BackgroundWorker
+            {
+                WorkerSupportsCancellation = true
+            };
+
+            this.backgroundWorker.DoWork += this.BackgroundWorker_DoWork;
+            this.backgroundWorker.RunWorkerAsync();
+        }
+
+        private void StopMetronome()
+        {
+            if (this.backgroundWorker != null && this.backgroundWorker.IsBusy)
             {
                 this.backgroundWorker.CancelAsync();
-                while (this.backgroundWorker.IsBusy)
-                {
-                    Thread.Sleep(1);
-                }
-
-                this.CurrentSong = this.Playlist.Songs[this.nextSongIndex];
-                this.Infos = $"{this.CurrentSong.Bpm} bpm    Signature: {this.CurrentSong.BeatPerMeasure}/{this.CurrentSong.BeatSubdivision}    Key: {this.CurrentSong.Key}";
-
-                this.nextSongIndex++;
-
-                this.backgroundWorker.RunWorkerAsync();
+                this.resetEvent.WaitOne();
             }
         }
 
@@ -106,8 +118,14 @@ namespace SongPrompter.ViewModels
 
             this.Beat = 0;
             TimeSpan beatDuration = TimeSpan.FromMinutes(1.0 / this.CurrentSong.Bpm);
-            while (!worker.CancellationPending)
+            while (true)
             {
+                if (worker.CancellationPending)
+                {
+                    e.Cancel = true;
+                    break;
+                }
+
                 var timeElapsed = stopwatch.Elapsed;
                 var durationSinceLastBeat = timeElapsed - timeElapsedUntilLastBeat;
                 if (durationSinceLastBeat >= beatDuration)
@@ -149,10 +167,13 @@ namespace SongPrompter.ViewModels
                     }
                 }
             }
+
+            Console.WriteLine("End of background worker job.");
+            this.resetEvent.Set();
         }
 
         [RelayCommand]
-        private async void Start()
+        private void Start()
         {
             this.started = true;
             this.Beat = 0;
@@ -160,6 +181,24 @@ namespace SongPrompter.ViewModels
             this.currentVerseIndex = -1;
 
             this.SongStarted?.Invoke(this.CurrentSong);
+        }
+
+        [RelayCommand]
+        private void PreviousSong()
+        {
+            if (this.currentSongIndex - 1 >= 0)
+            {
+                this.LoadSong(this.currentSongIndex - 1);
+            }
+        }
+
+        [RelayCommand]
+        private void NextSong()
+        {
+            if (this.currentSongIndex + 1 < this.Playlist.Songs.Length)
+            {
+                this.LoadSong(this.currentSongIndex + 1);
+            }
         }
     }
 }

@@ -11,10 +11,20 @@
             Padding="30,0"
             VerticalOptions="Start">
 
-            <Button
-                Text="Start"
-                FontSize="32" 
-                Command="{Binding StartCommand}" />
+            <HorizontalStackLayout>
+                <Button
+                    Text="Prev"
+                    FontSize="32" 
+                    Command="{Binding PreviousSongCommand}" />
+                <Button
+                    Text="Start"
+                    FontSize="32" 
+                    Command="{Binding StartCommand}" />
+                <Button
+                    Text="Next"
+                    FontSize="32" 
+                    Command="{Binding NextSongCommand}" />
+            </HorizontalStackLayout>
 
             <Label
                 Text="{Binding CurrentSong.Name}"
@@ -27,7 +37,7 @@
                 SemanticProperties.HeadingLevel="Level2"
                 FontSize="18"
                 HorizontalOptions="Start" />
-            
+
             <Label
                 Text="{Binding Infos}"
                 FontSize="14"
@@ -35,7 +45,6 @@
                 HorizontalOptions="Start" />
 
             <HorizontalStackLayout Margin="0,0,0,20" Padding="-30,0,0,0">
-
                 <Label
                     Text="{Binding Measure}"
                     HorizontalTextAlignment="Center"
@@ -49,17 +58,17 @@
                             <VerticalStackLayout>
                                 <HorizontalStackLayout>
                                     <Label 
-                                    Text="{Binding Name}" 
-                                    FontSize="14"
-                                    FontAttributes="Italic" 
-                                    Margin="0,0,2,0" />
+                                        Text="{Binding Name}" 
+                                        FontSize="14"
+                                        FontAttributes="Italic" 
+                                        Margin="0,0,2,0" />
 
                                     <Label 
-                                    Text="{Binding StartMeasure}" 
-                                    FontSize="10"
-                                    FontAttributes="Italic" />
+                                        Text="{Binding StartMeasure}" 
+                                        FontSize="10"
+                                        FontAttributes="Italic" />
                                 </HorizontalStackLayout>
-                                
+
                                 <Label 
                                     Text="{Binding Lyrics}" 
                                     FontSize="18" />
@@ -67,9 +76,8 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-                
+
             </HorizontalStackLayout>
-            
         </VerticalStackLayout>
     </ScrollView>
 
