@@ -11,8 +11,10 @@ namespace SongPrompter.ViewModels
     {
         private readonly Style defaultStyle;
         private readonly Style flashStyle;
+        private readonly Style flashBarStyle;
         private readonly TimeSpan flashDuration = TimeSpan.FromMilliseconds(50);
         private readonly TimeSpan threadWakeupDuration = TimeSpan.FromMilliseconds(15);
+        private readonly int countInBar = 3;
 
         [ObservableProperty]
         private Playlist playlist;
@@ -29,7 +31,10 @@ namespace SongPrompter.ViewModels
         [ObservableProperty]
         private int beat;
         [ObservableProperty]
-        private int measure;
+        private int bar;
+
+        [ObservableProperty]
+        private string startButtonName;
 
         private bool started = false;
         private int currentVerseIndex;
@@ -57,6 +62,11 @@ namespace SongPrompter.ViewModels
                 this.flashStyle = (Style)style;
             }
 
+            if (App.Current.Resources.TryGetValue("MetronomeFlashBarStyle", out style))
+            {
+                this.flashBarStyle = (Style)style;
+            }
+
             this.CurrentSong = new Song()
             {
                 Verses = new Verse[0]
@@ -66,6 +76,7 @@ namespace SongPrompter.ViewModels
         internal void Bind(Playlist playlist)
         {
             this.Playlist = playlist;
+            this.StartButtonName = "Start";
             this.LoadSong(0);
         }
 
@@ -82,7 +93,7 @@ namespace SongPrompter.ViewModels
             this.StopMetronome();
 
             this.CurrentSong = this.Playlist.Songs[songIndex];
-            this.Infos = $"{this.CurrentSong.Bpm} bpm    Signature: {this.CurrentSong.BeatPerMeasure}/{this.CurrentSong.BeatSubdivision}    Key: {this.CurrentSong.Key}";
+            this.Infos = $"{this.CurrentSong.Bpm} bpm    Signature: {this.CurrentSong.BeatPerBar}/{this.CurrentSong.BeatSubdivision}    Key: {this.CurrentSong.Key}";
 
             this.currentSongIndex = songIndex;
             this.StartMetronome();
@@ -139,19 +150,26 @@ namespace SongPrompter.ViewModels
                         timeElapsedUntilLastBeat -= lateness;
                     }
 
-                    this.MetronomeStyle = this.flashStyle;
-
                     if (this.started)
                     {
                         this.Beat++;
-                        this.Measure = this.Beat / this.CurrentSong.BeatPerMeasure;
+                        this.Bar = this.Beat / this.CurrentSong.BeatPerBar;
 
                         if (this.CurrentSong.Verses.Length > currentVerseIndex + 1 &&
-                            this.Measure >= this.CurrentSong.Verses[currentVerseIndex + 1].StartMeasure)
+                            this.Bar >= this.CurrentSong.Verses[currentVerseIndex + 1].StartBar)
                         {
                             currentVerseIndex++;
                             this.VerseChanged?.Invoke(currentVerseIndex);
                         }
+                    }
+
+                    if (this.started && this.Beat % this.CurrentSong.BeatPerBar == 0)
+                    {
+                        this.MetronomeStyle = this.flashBarStyle;
+                    }
+                    else
+                    {
+                        this.MetronomeStyle = this.flashStyle;
                     }
 
                     Thread.Sleep(this.flashDuration);
@@ -173,14 +191,25 @@ namespace SongPrompter.ViewModels
         }
 
         [RelayCommand]
-        private void Start()
+        private void StartStop()
         {
-            this.started = true;
-            this.Beat = 0;
-            this.Measure = 0;
-            this.currentVerseIndex = -1;
+            if (this.started)
+            {
+                this.started = false; 
+                this.Bar = 0;
+                this.currentVerseIndex = -1;
+                this.StartButtonName = "Start";
+            }
+            else
+            {
+                this.started = true;
+                this.Beat = this.countInBar * -this.CurrentSong.BeatPerBar;
+                this.Bar = -1;
+                this.currentVerseIndex = -1;
+                this.StartButtonName = "Stop";
 
-            this.SongStarted?.Invoke(this.CurrentSong);
+                this.SongStarted?.Invoke(this.CurrentSong);
+            }
         }
 
         [RelayCommand]

@@ -177,6 +177,10 @@
     </Style>
 
     <Style x:Key="MetronomeFlashStyle" TargetType="Label">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Yellow100Accent}, Dark={StaticResource Yellow100Accent}}" />
+    </Style>
+
+    <Style x:Key="MetronomeFlashBarStyle" TargetType="Label">
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Secondary}}" />
     </Style>
 

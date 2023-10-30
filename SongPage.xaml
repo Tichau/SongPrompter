@@ -17,9 +17,9 @@
                     FontSize="32" 
                     Command="{Binding PreviousSongCommand}" />
                 <Button
-                    Text="Start"
+                    Text="{Binding StartButtonName}"
                     FontSize="32" 
-                    Command="{Binding StartCommand}" />
+                    Command="{Binding StartStopCommand}" />
                 <Button
                     Text="Next"
                     FontSize="32" 
@@ -46,7 +46,7 @@
 
             <HorizontalStackLayout Margin="0,0,0,20" Padding="-30,0,0,0">
                 <Label
-                    Text="{Binding Measure}"
+                    Text="{Binding Bar}"
                     HorizontalTextAlignment="Center"
                     Style="{Binding MetronomeStyle}"
                     WidthRequest="10"
@@ -64,7 +64,7 @@
                                         Margin="0,0,2,0" />
 
                                     <Label 
-                                        Text="{Binding StartMeasure}" 
+                                        Text="{Binding StartBar}" 
                                         FontSize="10"
                                         FontAttributes="Italic" />
                                 </HorizontalStackLayout>

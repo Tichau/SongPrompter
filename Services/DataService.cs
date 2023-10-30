@@ -146,7 +146,7 @@ namespace SongPrompter.Services
                             verses.Add(new Verse()
                             {
                                 Name = match.Groups["name"].Value,
-                                StartMeasure = int.Parse(match.Groups["measure"].Value),
+                                StartBar = int.Parse(match.Groups["measure"].Value),
                                 Lyrics = string.Empty,
                             });
                         }
@@ -157,7 +157,7 @@ namespace SongPrompter.Services
                                 verses.Add(new Verse()
                                 {
                                     Name = string.Empty,
-                                    StartMeasure = 0,
+                                    StartBar = 0,
                                     Lyrics = string.Empty,
                                 });
                             }
@@ -192,7 +192,7 @@ namespace SongPrompter.Services
 
                                 case "metre":
                                     string[] values = match.Groups["value"].Value.Split('/');
-                                    song.BeatPerMeasure = int.Parse(values[0]);
+                                    song.BeatPerBar = int.Parse(values[0]);
                                     song.BeatSubdivision = int.Parse(values[1]);
                                     break;
 

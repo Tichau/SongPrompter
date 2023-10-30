@@ -7,7 +7,7 @@ namespace SongPrompter.Models
         [ObservableProperty]
         private string name;
         [ObservableProperty]
-        private int startMeasure;
+        private int startBar;
         [ObservableProperty]
         private string lyrics;
     }

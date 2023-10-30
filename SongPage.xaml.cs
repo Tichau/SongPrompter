@@ -27,9 +27,9 @@ namespace SongPrompter
             {
                 SongViewModel viewModel = ((SongViewModel)this.BindingContext);
                 viewModel.Bind(value);
-                if (viewModel.CurrentSong.BeatSubdivision != 4 || viewModel.CurrentSong.BeatPerMeasure <= 0)
+                if (viewModel.CurrentSong.BeatSubdivision != 4 || viewModel.CurrentSong.BeatPerBar <= 0)
                 {
-                    DisplayAlert("Warning", $"Unsupported time signature: {viewModel.CurrentSong.BeatPerMeasure}/{viewModel.CurrentSong.BeatSubdivision}", "OK");
+                    DisplayAlert("Warning", $"Unsupported time signature: {viewModel.CurrentSong.BeatPerBar}/{viewModel.CurrentSong.BeatSubdivision}", "OK");
                 }
 
                 OnPropertyChanged();

@@ -12,7 +12,7 @@ namespace SongPrompter.Models
         [ObservableProperty]
         private int bpm;
         [ObservableProperty]
-        private int beatPerMeasure;
+        private int beatPerBar;
         [ObservableProperty]
         private int beatSubdivision;
         
