@@ -65,6 +65,7 @@ namespace SongPrompter.Services
 
                 if (files.Length > 0)
                 {
+                    System.Array.Sort(files);
                     Console.WriteLine($"Parse {files.Length} song files.");
 
                     List<Song> songs = new List<Song>();
