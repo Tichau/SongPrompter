@@ -11,25 +11,19 @@
             Margin="5,10,5,10" />
 
         <ScrollView x:Name="scrollView" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <ScrollView.GestureRecognizers>
+                <SwipeGestureRecognizer Direction="Right" Command="{Binding PreviousSongCommand}" />
+                <SwipeGestureRecognizer Direction="Left" Command="{Binding NextSongCommand}" />
+            </ScrollView.GestureRecognizers>
             <VerticalStackLayout
                 Spacing="10"
                 Padding="30,0"
                 VerticalOptions="Start">
 
-                <HorizontalStackLayout>
-                    <Button
-                        Text="Prev"
-                        FontSize="32" 
-                        Command="{Binding PreviousSongCommand}" />
-                    <Button
-                        Text="{Binding StartButtonName}"
-                        FontSize="32" 
-                        Command="{Binding StartStopCommand}" />
-                    <Button
-                        Text="Next"
-                        FontSize="32" 
-                        Command="{Binding NextSongCommand}" />
-                </HorizontalStackLayout>
+                <Button
+                    Text="{Binding StartButtonName}"
+                    FontSize="32" 
+                    Command="{Binding StartStopCommand}" />
 
                 <Label
                     Text="{Binding CurrentSong.Name}"
