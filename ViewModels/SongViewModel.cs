@@ -29,9 +29,8 @@ namespace SongPrompter.ViewModels
         private Style metronomeStyle;
 
         [ObservableProperty]
-        private int beat;
-        [ObservableProperty]
         private int bar;
+        private volatile int beat;
 
         [ObservableProperty]
         private string startButtonName;
@@ -71,6 +70,8 @@ namespace SongPrompter.ViewModels
             {
                 Verses = new Verse[0]
             };
+
+            this.Bar = -this.countInBar;
         }
 
         internal void Bind(Playlist playlist)
@@ -127,7 +128,7 @@ namespace SongPrompter.ViewModels
 
             TimeSpan timeElapsedUntilLastBeat = TimeSpan.Zero;
 
-            this.Beat = 0;
+            this.beat = 0;
             TimeSpan beatDuration = TimeSpan.FromMinutes(1.0 / this.CurrentSong.Bpm);
             while (true)
             {
@@ -152,8 +153,13 @@ namespace SongPrompter.ViewModels
 
                     if (this.started)
                     {
-                        this.Beat++;
-                        this.Bar = this.Beat / this.CurrentSong.BeatPerBar;
+                        this.beat++;
+                        int bar = this.beat / this.CurrentSong.BeatPerBar;
+                        this.Bar = bar - this.countInBar + 1;
+                        if (this.Bar <= 0)
+                        {
+                            this.Bar--;
+                        }
 
                         if (this.CurrentSong.Verses.Length > currentVerseIndex + 1 &&
                             this.Bar >= this.CurrentSong.Verses[currentVerseIndex + 1].StartBar)
@@ -163,7 +169,7 @@ namespace SongPrompter.ViewModels
                         }
                     }
 
-                    if (this.started && this.Beat % this.CurrentSong.BeatPerBar == 0)
+                    if (this.started && this.beat % this.CurrentSong.BeatPerBar == 0)
                     {
                         this.MetronomeStyle = this.flashBarStyle;
                     }
@@ -193,19 +199,18 @@ namespace SongPrompter.ViewModels
         [RelayCommand]
         private void StartStop()
         {
+            this.beat = -1;
+            this.Bar = -this.countInBar;
+            this.currentVerseIndex = -1;
+
             if (this.started)
             {
-                this.started = false; 
-                this.Bar = 0;
-                this.currentVerseIndex = -1;
+                this.started = false;
                 this.StartButtonName = "Start";
             }
             else
             {
                 this.started = true;
-                this.Beat = this.countInBar * -this.CurrentSong.BeatPerBar;
-                this.Bar = -1;
-                this.currentVerseIndex = -1;
                 this.StartButtonName = "Stop";
 
                 this.SongStarted?.Invoke(this.CurrentSong);
