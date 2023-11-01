@@ -28,7 +28,7 @@ namespace SongPrompter.ViewModels
         }
 
         [RelayCommand]
-        private void Delete(object playlist)
+        private void DeletePlaylist(object playlist)
         {
             this.DataService.RemovePlaylist((Playlist)playlist);
         }

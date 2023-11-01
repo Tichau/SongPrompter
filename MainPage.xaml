@@ -18,27 +18,34 @@
                 FontSize="32"
                 HorizontalOptions="Center" />
 
-            <ListView ItemsSource="{Binding DataService.Playlists}">
+            <ListView ItemsSource="{Binding DataService.Playlists}" SelectionMode="None">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="models:Playlist">
                         <ViewCell>
-                            <HorizontalStackLayout HorizontalOptions="Fill">
-                                <Button 
-                                    Text="Play"
-                                    Command="{Binding Path=BindingContext.PlayCommand, Source={x:Reference Name=mainPage}}"
-                                    CommandParameter="{Binding .}"
-                                    Margin="0,0,20,0" />
+                            <SwipeView>
+                                <SwipeView.LeftItems>
+                                    <SwipeItems>
+                                        <SwipeItem 
+                                            Text="Delete" 
+                                            BackgroundColor="{StaticResource Accent}" 
+                                            Command="{Binding Path=BindingContext.DeletePlaylistCommand, Source={x:Reference Name=mainPage}}"
+                                            CommandParameter="{Binding .}"/>
+                                    </SwipeItems>
+                                </SwipeView.LeftItems>
+                                <AbsoluteLayout>
+                                    <Label 
+                                        Text="{Binding Name}"
+                                        FontSize="32" />
 
-                                <Label 
-                                    Text="{Binding Name}"
-                                    FontSize="32" />
-
-                                <Button 
-                                    Text="Delete"
-                                    Command="{Binding Path=BindingContext.DeleteCommand, Source={x:Reference Name=mainPage}}"
-                                    CommandParameter="{Binding .}"
-                                    Margin="80,0,0,0" />
-                            </HorizontalStackLayout>
+                                    <Button 
+                                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                                        AbsoluteLayout.LayoutBounds="1,0.5,70,40"
+                                        Text="Play"
+                                        Command="{Binding Path=BindingContext.PlayCommand, Source={x:Reference Name=mainPage}}"
+                                        CommandParameter="{Binding .}" />
+                                </AbsoluteLayout>
+                            </SwipeView>
+                           
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
