@@ -27,9 +27,10 @@
                                     <SwipeItems>
                                         <SwipeItem 
                                             Text="Delete" 
+                                            IconImageSource="trashcan.svg"
                                             BackgroundColor="{StaticResource Accent}" 
                                             Command="{Binding Path=BindingContext.DeletePlaylistCommand, Source={x:Reference Name=mainPage}}"
-                                            CommandParameter="{Binding .}"/>
+                                            CommandParameter="{Binding .}" />
                                     </SwipeItems>
                                 </SwipeView.LeftItems>
                                 <AbsoluteLayout>
