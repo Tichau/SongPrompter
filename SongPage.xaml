@@ -5,80 +5,84 @@
              xmlns:models="clr-namespace:SongPrompter.Models"
              xmlns:viewmodels="clr-namespace:SongPrompter.ViewModels"
              x:DataType="viewmodels:SongViewModel">
-    <ScrollView x:Name="scrollView">
-        <VerticalStackLayout
-            Spacing="10"
-            Padding="30,0"
-            VerticalOptions="Start">
+    <AbsoluteLayout>
+        <Label 
+            Text="{Binding Bar}" 
+            Margin="5,10,5,10" />
 
-            <HorizontalStackLayout>
-                <Button
-                    Text="Prev"
-                    FontSize="32" 
-                    Command="{Binding PreviousSongCommand}" />
-                <Button
-                    Text="{Binding StartButtonName}"
-                    FontSize="32" 
-                    Command="{Binding StartStopCommand}" />
-                <Button
-                    Text="Next"
-                    FontSize="32" 
-                    Command="{Binding NextSongCommand}" />
-            </HorizontalStackLayout>
+        <ScrollView x:Name="scrollView" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <VerticalStackLayout
+                Spacing="10"
+                Padding="30,0"
+                VerticalOptions="Start">
 
-            <Label
-                Text="{Binding CurrentSong.Name}"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Start" />
+                <HorizontalStackLayout>
+                    <Button
+                        Text="Prev"
+                        FontSize="32" 
+                        Command="{Binding PreviousSongCommand}" />
+                    <Button
+                        Text="{Binding StartButtonName}"
+                        FontSize="32" 
+                        Command="{Binding StartStopCommand}" />
+                    <Button
+                        Text="Next"
+                        FontSize="32" 
+                        Command="{Binding NextSongCommand}" />
+                </HorizontalStackLayout>
 
-            <Label
-                Text="{Binding CurrentSong.Artist}"
-                SemanticProperties.HeadingLevel="Level2"
-                FontSize="18"
-                HorizontalOptions="Start" />
-
-            <Label
-                Text="{Binding Infos}"
-                FontSize="14"
-                FontAttributes="Italic"
-                HorizontalOptions="Start" />
-
-            <HorizontalStackLayout Margin="0,0,0,20" Padding="-30,0,0,0">
                 <Label
-                    Text="{Binding Bar}"
-                    HorizontalTextAlignment="Center"
-                    Style="{Binding MetronomeStyle}"
-                    WidthRequest="10"
-                    Margin="10,0,10,0" />
+                    Text="{Binding CurrentSong.Name}"
+                    SemanticProperties.HeadingLevel="Level1"
+                    FontSize="32"
+                    HorizontalOptions="Start" />
 
-                <CollectionView x:Name="verses" ItemsSource="{Binding CurrentSong.Verses}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:Verse">
-                            <VerticalStackLayout>
-                                <HorizontalStackLayout>
+                <Label
+                    Text="{Binding CurrentSong.Artist}"
+                    SemanticProperties.HeadingLevel="Level2"
+                    FontSize="18"
+                    HorizontalOptions="Start" />
+
+                <Label
+                    Text="{Binding Infos}"
+                    FontSize="14"
+                    FontAttributes="Italic"
+                    HorizontalOptions="Start" />
+
+                <HorizontalStackLayout Margin="0,0,0,20" Padding="-30,0,0,0">
+                    <Label
+                        HorizontalTextAlignment="Center"
+                        Style="{Binding MetronomeStyle}"
+                        WidthRequest="10"
+                        Margin="10,0,10,0" />
+
+                    <CollectionView x:Name="verses" ItemsSource="{Binding CurrentSong.Verses}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:Verse">
+                                <VerticalStackLayout>
+                                    <HorizontalStackLayout>
+                                        <Label 
+                                            Text="{Binding Name}" 
+                                            FontSize="14"
+                                            FontAttributes="Italic" 
+                                            Margin="0,0,2,0" />
+
+                                        <Label 
+                                            Text="{Binding StartBar}" 
+                                            FontSize="10"
+                                            FontAttributes="Italic" />
+                                            </HorizontalStackLayout>
+
                                     <Label 
-                                        Text="{Binding Name}" 
-                                        FontSize="14"
-                                        FontAttributes="Italic" 
-                                        Margin="0,0,2,0" />
+                                        Text="{Binding Lyrics}" 
+                                        FontSize="18" />
+                                </VerticalStackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
 
-                                    <Label 
-                                        Text="{Binding StartBar}" 
-                                        FontSize="10"
-                                        FontAttributes="Italic" />
-                                </HorizontalStackLayout>
-
-                                <Label 
-                                    Text="{Binding Lyrics}" 
-                                    FontSize="18" />
-                            </VerticalStackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-
-            </HorizontalStackLayout>
-        </VerticalStackLayout>
-    </ScrollView>
-
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+    </AbsoluteLayout>
 </ContentPage>
