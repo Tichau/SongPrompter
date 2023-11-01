@@ -7,7 +7,7 @@
 > key: A
 
 ```text
-[Verse 1#10]
+[Verse 1#11]
 Please allow me to introduce myself
 I'm a man of wealth and taste
 I've been around for a long, long year
@@ -18,7 +18,7 @@ Had his moment of doubt and pain
 Made damn sure that Pilate
 Washed his hands and sealed his fate
 
-[Chorus#28]
+[Chorus 1#28]
 Pleased to meet you
 Hope you guess my name
 But what's puzzling you
@@ -35,13 +35,13 @@ Held a general's rank
 When the blitzkrieg raged
 And the bodies stank
 
-[Chorus#50]
+[Chorus 2#49]
 Pleased to meet you
 Hope you guess my name, oh yeah
 Ah, what's puzzling you
 Is the nature of my game, oh yeah
 
-[Verse 3#58]
+[Verse 3#57]
 I watched with glee
 While your kings and queens
 Fought for ten decades
@@ -57,21 +57,21 @@ I'm a man of wealth and taste
 And I laid traps for troubadours
 Who get killed before they reached Bombay
 
-[Chorus#75]
+[Chorus 3#74]
 Pleased to meet you
 Hope you guessed my name, oh yeah
 But what's puzzling you
 Is the nature of my game, oh yeah, get down, baby
 
-[Solo#83]
+[Solo#82]
 
-[Chorus#101]
+[Chorus 4#99]
 Pleased to meet you
 Hope you guessed my name, oh yeah
 But what's confusing you
 Is just the nature of my game, mm yeah
 
-[Verse 4#109]
+[Verse 4#107]
 Just as every cop is a criminal
 And all the sinners saints
 As heads is tails
@@ -84,7 +84,7 @@ Have some sympathy, and some taste
 Use all your well-learned politesse
 Or I'll lay your soul to waste, mm yeah
 
-[Chorus#126]
+[Chorus 5#124]
 Pleased to meet you
 Hope you guessed my name, mm yeah
 
@@ -108,3 +108,5 @@ What's my name
 Tell me, baby, what's my name
 Tell me, sweetie, what's my name
 ```
+
+<!-- Verified -->

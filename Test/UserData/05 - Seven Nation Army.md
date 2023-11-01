@@ -7,7 +7,7 @@
 > key: E
 
 ```text
-[Verse 1#8]
+[Verse 1#9]
 I'm gonna fight 'em off
 A seven nation army couldn't hold me back
 They're gonna rip it off
@@ -17,9 +17,12 @@ Because I can't forget
 Back and forth through my mind
 Behind a cigarette
 
-And the message comin' from my eyes says, "Leave it alone"
+And the message comin' from my eyes says, 
+"Leave it alone"
 
-[Verse 2#42]
+[Chorus#27]
+
+[Verse 2#45]
 Don't wanna hear about it
 Every single one's got a story to tell
 Everyone knows about it
@@ -29,9 +32,12 @@ I'm gonna serve it to you
 And that ain't what you want to hear
 But that's what I'll do
 
-And the feeling coming from my bones says, "Find a home"
+And the feeling coming from my bones says, 
+"Find a home"
 
-[Verse 3#78]
+[Solo#63]
+
+[Verse 3#89]
 I'm going to Wichita
 Far from this opera for evermore
 I'm gonna work the straw
@@ -41,5 +47,10 @@ Right before the Lord
 All the words are gonna bleed from me
 And I will think no more
 
-And the stains comin' from my blood tell me, "Go back home"
+And the stains comin' from my blood tell me, 
+"Go back home"
+
+[Chorus#107 ]
 ```
+
+<!-- Verified -->

@@ -7,7 +7,7 @@
 > key: G
 
 ```text
-[Verse 1#4]
+[Verse 1#5]
 Old pirates, yes, they rob I
 Sold I to the merchant ships
 Minutes after they took I
@@ -17,14 +17,14 @@ By the hand of the Almighty
 We forward in this generation
 Triumphantly
 
-[Chorus#12]
+[Chorus 1#13]
 Won't you help to sing
 These songs of freedom?
 'Cause all I ever have
 Redemption songs
 Redemption songs
 
-[Verse 2#18]
+[Verse 2#19]
 Emancipate yourselves from mental slavery
 None but ourselves can free our minds
 Have no fear for atomic energy
@@ -34,7 +34,7 @@ While we stand aside and look? Ooh!
 Some say it's just a part of it
 We've got to fulfill the book
 
-[Chorus#26]
+[Chorus 2#27]
 Won't you help to sing
 These songs of freedom?
 'Cause all I ever have
@@ -42,7 +42,7 @@ Redemption songs
 Redemption songs
 Redemption songs
 
-[Verse 3#32]
+[Verse 3#38]
 Emancipate yourselves from mental slavery
 None but ourselves can free our minds
 Whoa! Have no fear for atomic energy
@@ -52,7 +52,7 @@ While we stand aside and look?
 Yes, some say it's just a part of it
 We've got to fulfill the book
 
-[Chorus#40]
+[Chorus 3#45]
 Won't you help to sing
 These songs of freedom?
 'Cause all I ever have
@@ -62,3 +62,5 @@ Redemption songs
 These songs of freedom
 Songs of freedom
 ```
+
+<!-- Verified -->

@@ -11,7 +11,7 @@ Ah ah
 Ah ah
 Ah ah
 
-[Verse 1#4]
+[Verse 1#5]
 The sky is a neighborhood
 So keep it down
 heart is a storybook
@@ -22,11 +22,12 @@ Don't make a sound
 Lights coming up ahead
 Don't look now
 
+[Pre Chorus#13]
 The sky is a neighborhood
 The sky is a neighborhood
 Don't look now
 
-[Chorus#16]
+[Chorus 1#17]
 Oh my dear Heaven is a big band now
 Gotta get to sleep somehow
 Bangin' on the ceiling
@@ -39,7 +40,7 @@ Bangin' on the ceiling
 Bangin' on the ceiling
 Keep it down
 
-[Verse 2#24]
+[Verse 2#25]
 Mind is a battlefield
 All hope is gone
 Trouble to the right and left
@@ -50,11 +51,12 @@ I'm a ticking bomb
 Maybe you should watch your step
 Don't get lost
 
+[Pre Chorus#33]
 The sky is a neighborhood
 The sky is a neighborhood
 Don't get lost
 
-[Chorus#36]
+[Chorus 2#37]
 Oh my dear Heaven is a big band now
 Gotta get to sleep somehow
 Bangin' on the ceiling
@@ -69,19 +71,19 @@ Keep it down
 
 The sky is a neighborhood
 
-[Verse 3#47]
+[Verse 3#48]
 heart is a storybook
 A star burned out
 Something coming up ahead
 Don't look now
-
-[Chorus#51]
+ 
+[Chorus 3#53]
 Oh my dear Heaven is a big band now
 Gotta get to sleep somehow
 Bangin' on the ceiling
 Bangin' on the ceiling
 Keep it down
-
+ 
 Oh my dear Heaven is a big band now
 Gotta get to sleep somehow
 Bangin' on the ceiling
@@ -96,3 +98,5 @@ Keep it down
 
 The sky is a neighborhood
 ```
+
+<!-- Verified -->

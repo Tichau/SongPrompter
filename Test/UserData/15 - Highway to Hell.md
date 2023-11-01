@@ -7,7 +7,7 @@
 > key: F#
 
 ```text
-[Verse 1#8]
+[Verse 1#9]
 Living easy, lovin' free
 Season ticket on a one way ride
 Asking nothing, leave me be
@@ -17,13 +17,13 @@ Ain't nothing I'd rather do
 Goin' down, party time
 My friends are gonna be there too, yeah
 
-[Chorus#25]
+[Chorus 1#26]
 I'm on the highway to hell
 On the highway to hell
 Highway to hell
 I'm on the highway to hell
 
-[Verse 1#30]
+[Verse 1#35]
 No stop signs, speed limit
 Nobody's gonna slow me down
 Like a wheel, gonna spin it
@@ -34,7 +34,7 @@ Hey mama, look at me
 I'm on the way to the promised land
 Woo!
 
-[Chorus#47]
+[Chorus 2#52]
 I'm on the highway to hell
 Highway to hell
 I'm on the highway to hell
@@ -43,9 +43,9 @@ Highway to hell
 Don't stop me
 Heh, heh!
 
-[Solo#59]
+[Solo#64]
 
-[Chorus#67]
+[Chorus 3#72]
 I'm on the highway to hell
 On the highway to hell
 Highway to hell
@@ -59,3 +59,5 @@ And I'm going down
 All the way
 I'm on the highway to hell
 ```
+
+<!-- Verified -->

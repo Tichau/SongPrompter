@@ -7,13 +7,13 @@
 > key: G♯/A♭
 
 ```text
-[Verse 1#4]
+[Verse 1#5]
 Girl, you really got me goin'
 You got me so I don't know what I'm doin'
 Yeah, you really got me now
 You got me so I can't sleep at night
 
-[Chorus#12]
+[Chorus 1#13]
 Yeah, you really got me now
 You got me so I don't know what I'm doin', now
 Oh yeah, you really got me now
@@ -23,13 +23,13 @@ You Really Got Me
 You Really Got Me
 You Really Got Me
 
-[Verse 2#24]
+[Verse 2#25]
 See, don't ever set me free
 I always wanna be by your side
 Girl, you really got me now
 You got me so I can't sleep at night
 
-[Chorus#30]
+[Chorus 2#33]
 Yeah, you really got me now
 You got me so I don't know what I'm doin', now
 Oh yeah, you really got me now
@@ -40,15 +40,15 @@ You Really Got Me
 You Really Got Me
 Oh no...
 
-[Solo#42]
+[Solo#44]
 
-[Verse 3#50]
+[Verse 3#55]
 See, don't ever set me free
 I always wanna be by your side
 Girl, you really got me now
 You got me so I can't sleep at night
 
-[Chorus#58]
+[Chorus 3#63]
 Yeah, you really got me now
 You got me so I don't know what I'm doin', now
 Oh yeah, you really got me now
@@ -59,3 +59,4 @@ You Really Got Me
 You Really Got Me
 ```
 
+<!-- Verified -->

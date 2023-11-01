@@ -7,7 +7,7 @@
 > key: B
 
 ```text
-[Verse 1#4]
+[Verse 1#5]
 Left a good job in the city
 Working for the man ev'ry night and day
 Then I never lost a minute of sleep
@@ -18,7 +18,7 @@ Big wheels keep on turning
 Proud Mary keeps on burning
 Rolling, Rolling, Rolling on the river
 
-[Verse 2#20]
+[Verse 2#21]
 Cleaned a lot of plates in Memphis
 Pumped a lot of 'tane down in New Orleans
 But I never saw the good side of the city
@@ -31,7 +31,7 @@ Rolling, Rolling, Rolling on the river
 
 <tempo change>
 
-[Verse 1#40]
+[Verse 1#49]
 Left a good job in the city
 Working for the man ev'ry night and day
 Then I never lost a minute of sleep
@@ -42,7 +42,7 @@ Big wheels keep on turning
 Proud Mary keeps on burning
 Rolling, Rolling, Rolling on the river
 
-[Verse 2#48]
+[Verse 2#66]
 Cleaned a lot of plates in Memphis
 Pumped a lot of 'tane down in New Orleans
 But I never saw the good side of the city
@@ -52,7 +52,7 @@ Big wheels keep on turning
 Proud Mary keeps on burning
 Rolling, Rolling, Rolling on the river
 
-[Verse 3#56]
+[Verse 3#82]
 If you come down to the river
 Betcha gonna find the people who live
 You don't have to worry though you have no money
@@ -63,3 +63,5 @@ Proud Mary keeps on burning
 Rolling, Rolling, Rolling on the river
 Rolling, Rolling, Rolling on the river...
 ```
+
+<!-- Verified -->

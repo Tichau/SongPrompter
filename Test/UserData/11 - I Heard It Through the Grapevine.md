@@ -4,17 +4,17 @@
 
 > bpm: 119
 > metre: 4/4
-> key: C
+> key: Bm
 
 ```text
-[Verse 1#8]
+[Verse 1#16]
 Ooh-ooh, bet you're wondering how I knew
 'Bout your plan to make me blue
 With some other guy that you knew before?
 Between the two of us guys, you know I love you more
 Took me by surprise, I must say, when I found out yesterday
 
-[Chorus#20]
+[Chorus 1#20]
 Ooh-ooh, I heard it through the grapevine
 Not much longer would you be mine
 Ooh-ooh, I heard it through the grapevine
@@ -29,14 +29,14 @@ Losing you would end my life, you see
 You could've told me yourself that you found someone else
 Instead
 
-[Chorus#48]
+[Chorus 2#48]
 I heard it through the grapevine
 Not much longer would you be mine
 Ooh-ooh, I heard it through the grapevine
 And I'm just about to lose my mind
 Honey, honey yeah
 
-[Verse 3#64]
+[Verse 3#62]
 People say "You hear from what you see
 Not, not, not from what you hear."
 I can't help but being confused
@@ -44,7 +44,7 @@ If it's true, won't you tell me dear?
 Do you plan to let me go
 For the other guy that you knew before?
 
-[Chorus#76]
+[Chorus 3#76]
 Ooh-ooh, I heard it through the grapevine
 Not much longer would you be mine
 Ooh-ooh, I heard it through the grapevine
@@ -61,3 +61,5 @@ Aah-aah, I heard it through the grapevine
 And I'm just about to lose my mind
 Honey, honey yeah
 ```
+
+<!-- Verified -->

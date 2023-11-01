@@ -7,7 +7,7 @@
 > key: C
 
 ```text
-[Verse 1#4]
+[Verse 1#5]
 Is it getting better
 Or do you feel the same?
 Will it make it easier on you, now
@@ -18,7 +18,7 @@ When it's one need in the night
 One love, we get to share it
 Leaves you, baby, if you don't care for it
 
-[Verse 2#24]
+[Verse 2#25]
 Did I disappoint you
 Or leave a bad taste in your mouth?
 You act like you never had love
@@ -30,7 +30,7 @@ We're one, but we're not the same
 We get to carry each other, carry each other
 One
 
-[Verse 3#44]
+[Verse 3#45]
 Have you come here for forgiveness?
 Have you come to raise the dead?
 Have you come here to play Jesus
@@ -41,7 +41,7 @@ You gave me nothing, now it's all I got
 We're one, but we're not the same
 Well, we hurt each other, then we do it again
 
-[Verse 4#60]
+[Verse 4#61]
 You say love is a temple, love a higher law
 Love is a temple, love the higher law
 You ask me to enter, but then you make me crawl
@@ -65,3 +65,5 @@ Oh, higher
 (Ay, yeah, go) higher
 (Oh) Higher
 ```
+
+<!-- Verified -->

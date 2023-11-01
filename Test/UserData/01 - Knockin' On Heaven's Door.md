@@ -7,27 +7,29 @@
 > key: G
 
 ```text
-[Verse 1#8]
+[Verse 1#9]
 Mama, take this badge off of me
 I can't use it anymore
 It's gettin' dark, too dark to see
 I feel I'm knockin' on heaven's door
 
-[Chorus#16]
+[Chorus 1#17]
 Knock, knock, knockin' on heaven's door
 Knock, knock, knockin' on heaven's door
 Knock, knock, knockin' on heaven's door
 Knock, knock, knockin' on heaven's door
 
-[Verse 2#32]
+[Verse 2#25]
 Mama, put my guns in the ground
 I can't shoot them anymore
 That long black cloud is comin' down
 I feel I'm knockin' on heaven's door
 
-[Chorus#40]
+[Chorus 2#33]
 Knock, knock, knockin' on heaven's door
 Knock, knock, knockin' on heaven's door
 Knock, knock, knockin' on heaven's door
 Knock, knock, knockin' on heaven's door
 ```
+
+<!-- Verified -->
