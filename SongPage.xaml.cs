@@ -11,6 +11,11 @@ namespace SongPrompter
 
         public double[] yVersesPositions;
 
+        private SongViewModel ViewModel
+        {
+            get => this.BindingContext as SongViewModel;
+        }
+
         public SongPage(SongViewModel viewModel)
         {
             InitializeComponent();
@@ -25,11 +30,10 @@ namespace SongPrompter
             get => ((SongViewModel)this.BindingContext).Playlist;
             set
             {
-                SongViewModel viewModel = ((SongViewModel)this.BindingContext);
-                viewModel.Bind(value);
-                if (viewModel.CurrentSong.BeatSubdivision != 4 || viewModel.CurrentSong.BeatPerBar <= 0)
+                this.ViewModel.Bind(value);
+                if (this.ViewModel.CurrentSong.BeatSubdivision != 4 || this.ViewModel.CurrentSong.BeatPerBar <= 0)
                 {
-                    DisplayAlert("Warning", $"Unsupported time signature: {viewModel.CurrentSong.BeatPerBar}/{viewModel.CurrentSong.BeatSubdivision}", "OK");
+                    DisplayAlert("Warning", $"Unsupported time signature: {this.ViewModel.CurrentSong.BeatPerBar}/{this.ViewModel.CurrentSong.BeatSubdivision}", "OK");
                 }
 
                 OnPropertyChanged();

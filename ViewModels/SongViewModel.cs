@@ -94,7 +94,7 @@ namespace SongPrompter.ViewModels
             this.StopMetronome();
 
             this.CurrentSong = this.Playlist.Songs[songIndex];
-            this.Infos = $"{this.CurrentSong.Bpm} bpm    Signature: {this.CurrentSong.BeatPerBar}/{this.CurrentSong.BeatSubdivision}    Key: {this.CurrentSong.Key}";
+            this.Infos = $"{this.CurrentSong.Bpm} bpm    Signature: {this.CurrentSong.BeatPerBar}/{this.CurrentSong.BeatSubdivision}    Key: {this.CurrentSong.Key}    Song:{songIndex + 1}/{this.Playlist.Songs.Length}";
 
             this.currentSongIndex = songIndex;
             this.StartMetronome();
