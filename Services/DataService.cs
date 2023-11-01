@@ -139,6 +139,13 @@ namespace SongPrompter.Services
                 while (!textReader.EndOfStream)
                 {
                     string line = textReader.ReadLine();
+
+                    if (line.StartsWith("```"))
+                    {
+                        parseLyrics = !parseLyrics;
+                        continue;
+                    }
+
                     if (parseLyrics)
                     {
                         if (this.verseMetadataRegex.IsMatch(line))
@@ -204,10 +211,6 @@ namespace SongPrompter.Services
                                 default:
                                     throw new Exception($"Unknown metadata: {match.Groups["key"].Value}");
                             }
-                        }
-                        else if (line.StartsWith("```"))
-                        {
-                            parseLyrics = !parseLyrics;
                         }
                     }
                 }
