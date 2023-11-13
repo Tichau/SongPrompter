@@ -10,13 +10,16 @@ namespace SongPrompter
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            if (!Android.OS.Environment.IsExternalStorageManager)
+            if (OperatingSystem.IsAndroidVersionAtLeast(30))
             {
-                Intent intent = new Intent();
-                intent.SetAction(Android.Provider.Settings.ActionManageAppAllFilesAccessPermission);
-                Android.Net.Uri uri = Android.Net.Uri.FromParts("package", this.PackageName, null);
-                intent.SetData(uri);
-                StartActivity(intent);
+                if (!Android.OS.Environment.IsExternalStorageManager)
+                {
+                    Intent intent = new Intent();
+                    intent.SetAction(Android.Provider.Settings.ActionManageAppAllFilesAccessPermission);
+                    Android.Net.Uri uri = Android.Net.Uri.FromParts("package", this.PackageName, null);
+                    intent.SetData(uri);
+                    StartActivity(intent);
+                }
             }
 
             base.OnCreate(savedInstanceState);
