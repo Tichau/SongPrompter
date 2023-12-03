@@ -4,7 +4,7 @@
 
 > bpm: 96
 > metre: 4/4
-> key: B
+> key: A
 
 ```text
 [Verse 1#5]
