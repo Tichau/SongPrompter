@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvm0shoa3fvoq"]
+
+[ext_resource type="Script" uid="uid://brscwamrah85l" path="res://ui/song_list/SongSelector.cs" id="1_qsnci"]
+[ext_resource type="Texture2D" uid="uid://ds5rlgjtqk621" path="res://ui/main_menu/play.svg" id="3_7vn7s"]
+
+[node name="SongSelector" type="Control" node_paths=PackedStringArray("index", "name")]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 3
+anchors_preset = 0
+offset_bottom = 50.0
+mouse_filter = 1
+script = ExtResource("1_qsnci")
+index = NodePath("HBoxContainer/Index")
+name = NodePath("HBoxContainer/SongName")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Index" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "01"
+
+[node name="SongName" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Song Name"
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="PlayButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("3_7vn7s")
+
+[connection signal="pressed" from="HBoxContainer/PlayButton" to="." method="OnPlayPressed"]

@@ -1,0 +1,77 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8yso7wf28lx0"]
+
+[ext_resource type="Script" uid="uid://dv4074jeur6qq" path="res://ui/song_list/SongList.cs" id="1_s5uqt"]
+[ext_resource type="PackedScene" uid="uid://bvm0shoa3fvoq" path="res://ui/song_list/song_selector.tscn" id="2_30u0e"]
+[ext_resource type="Texture2D" uid="uid://64ljbc5twc64" path="res://ui/song/back.svg" id="3_1u6hb"]
+
+[node name="SongList" type="ColorRect" node_paths=PackedStringArray("setlistName", "setlistInfo", "setlistContent")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_s5uqt")
+songSelectorTemplate = ExtResource("2_30u0e")
+setlistName = NodePath("MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Title")
+setlistInfo = NodePath("MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SubTitle")
+setlistContent = NodePath("MarginContainer/ScrollContainer/VBoxContainer/VBoxContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Back" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("3_1u6hb")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Playlist Name"
+
+[node name="SubTitle" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "31 titles"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Setlist" parent="MarginContainer/ScrollContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_30u0e")]
+layout_mode = 2
+
+[node name="Setlist2" parent="MarginContainer/ScrollContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_30u0e")]
+layout_mode = 2
+
+[node name="Setlist3" parent="MarginContainer/ScrollContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_30u0e")]
+layout_mode = 2
+
+[node name="Setlist4" parent="MarginContainer/ScrollContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_30u0e")]
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/Back" to="." method="OnBackPressed"]

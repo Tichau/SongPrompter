@@ -99,6 +99,12 @@ public partial class Song : Core.UI.Panel
         this.app.CurrentSetlist = null;
     }
 
+    public void OnSongListPressed()
+    {
+        Debug.Assert(this.app != null);
+        this.app.SongList = true;
+    }
+
     public override void _UnhandledInput(InputEvent inputEvent)
     {
         bool CanSwipeLeft()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://blgx0pere0er3"]
+[gd_scene load_steps=6 format=3 uid="uid://blgx0pere0er3"]
 
 [ext_resource type="Script" uid="uid://d4d0nclrtugw" path="res://sources/App.cs" id="1_j6dmo"]
 [ext_resource type="PackedScene" uid="uid://k6l3fvla2gvx" path="res://ui/main_menu/main_menu.tscn" id="2_qbwvd"]
 [ext_resource type="PackedScene" uid="uid://ck6wv4d3cbnnh" path="res://ui/song/song.tscn" id="3_d7sxu"]
 [ext_resource type="PackedScene" uid="uid://sjv7d4v080jv" path="res://ui/core/confirmation_panel/confirmation_panel.tscn" id="3_i4801"]
+[ext_resource type="PackedScene" uid="uid://c8yso7wf28lx0" path="res://ui/song_list/song_list.tscn" id="4_nee2x"]
 
 [node name="App" type="Node" node_paths=PackedStringArray("versionLabel")]
 script = ExtResource("1_j6dmo")
@@ -23,6 +24,8 @@ text = "v0.1"
 horizontal_alignment = 2
 
 [node name="Song" parent="." instance=ExtResource("3_d7sxu")]
+
+[node name="SongList" parent="." instance=ExtResource("4_nee2x")]
 
 [node name="ConfirmationPanel" type="CanvasLayer" parent="."]
 
