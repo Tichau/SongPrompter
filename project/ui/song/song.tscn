@@ -1,0 +1,133 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck6wv4d3cbnnh"]
+
+[ext_resource type="Script" uid="uid://53tdrp0qyoh4" path="res://ui/song/Song.cs" id="1_r84j2"]
+[ext_resource type="PackedScene" uid="uid://xa5e21x6vjsx" path="res://ui/song/verse.tscn" id="2_3s6jk"]
+[ext_resource type="Texture2D" uid="uid://64ljbc5twc64" path="res://ui/song/back.svg" id="3_ym42o"]
+[ext_resource type="Texture2D" uid="uid://c5qjtakuma0up" path="res://ui/song/list.svg" id="4_uc3x2"]
+
+[node name="Song" type="ColorRect" node_paths=PackedStringArray("swipeContainer", "scrollContainer", "playButton", "title", "artist", "bpm", "signature", "key", "songNumber", "verseContainer", "beatFeedback", "barNumber")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_r84j2")
+swipeContainer = NodePath("MarginContainer/ScrollContainer/VBoxContainer")
+scrollContainer = NodePath("MarginContainer/ScrollContainer")
+playButton = NodePath("MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/Play")
+title = NodePath("MarginContainer/ScrollContainer/VBoxContainer/Title")
+artist = NodePath("MarginContainer/ScrollContainer/VBoxContainer/Artist")
+bpm = NodePath("MarginContainer/ScrollContainer/VBoxContainer/Infos/Bpm")
+signature = NodePath("MarginContainer/ScrollContainer/VBoxContainer/Infos/Signature")
+key = NodePath("MarginContainer/ScrollContainer/VBoxContainer/Infos/Key")
+songNumber = NodePath("MarginContainer/ScrollContainer/VBoxContainer/Infos/Song")
+verseContainer = NodePath("MarginContainer/ScrollContainer/VBoxContainer/Verses")
+verseTemplate = ExtResource("2_3s6jk")
+beatFeedback = NodePath("Beat")
+flashColor = Color(1, 1, 1, 1)
+flashBarColor = Color(0.815686, 0.00784314, 0.105882, 1)
+flashDurationInMsec = 50
+barNumber = NodePath("Bar")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("3_ym42o")
+
+[node name="Play" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Play"
+
+[node name="SongList" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+icon = ExtResource("4_uc3x2")
+
+[node name="Title" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Song Title"
+
+[node name="Artist" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Artist Name"
+
+[node name="Infos" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Bpm" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Infos"]
+layout_mode = 2
+text = "100 bpm"
+
+[node name="Signature" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Infos"]
+layout_mode = 2
+text = "Signature: 4/4"
+
+[node name="Key" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Infos"]
+layout_mode = 2
+text = "Key: A"
+
+[node name="Song" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Infos"]
+layout_mode = 2
+text = "Song: 1/23"
+
+[node name="Verses" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Verse" parent="MarginContainer/ScrollContainer/VBoxContainer/Verses" instance=ExtResource("2_3s6jk")]
+layout_mode = 2
+
+[node name="Verse2" parent="MarginContainer/ScrollContainer/VBoxContainer/Verses" instance=ExtResource("2_3s6jk")]
+layout_mode = 2
+
+[node name="Verse3" parent="MarginContainer/ScrollContainer/VBoxContainer/Verses" instance=ExtResource("2_3s6jk")]
+layout_mode = 2
+
+[node name="Beat" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 10.0
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Bar" type="Label" parent="."]
+layout_mode = 0
+offset_right = 30.0
+offset_bottom = 17.0
+theme_override_font_sizes/font_size = 10
+text = "12"
+
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/Back" to="." method="OnBackPressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/Play" to="." method="StartStop"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/SongList" to="." method="OnBackPressed"]

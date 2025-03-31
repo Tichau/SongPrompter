@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cka8xiyv0a16u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dmjyp"]
+
+[resource]
+Button/font_sizes/font_size = 20
+Label/constants/line_spacing = -3
+VSeparator/styles/separator = SubResource("StyleBoxEmpty_dmjyp")

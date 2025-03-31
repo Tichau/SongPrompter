@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://ya663kkst55k"]
+
+[ext_resource type="Script" uid="uid://cxgex5kcn4twy" path="res://ui/main_menu/Setlist.cs" id="1_bus2d"]
+[ext_resource type="Texture2D" uid="uid://cae1fslinmg3r" path="res://ui/main_menu/trashcan.svg" id="2_rfv00"]
+
+[node name="Setlist" type="Control" node_paths=PackedStringArray("name")]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 0.031
+offset_bottom = 0.32
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bus2d")
+name = NodePath("HBoxContainer/Label")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RemoveButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("2_rfv00")
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Setlist Name"
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[connection signal="pressed" from="HBoxContainer/RemoveButton" to="." method="OnRemovePressed"]
+[connection signal="pressed" from="HBoxContainer/PlayButton" to="." method="OnPlayPressed"]

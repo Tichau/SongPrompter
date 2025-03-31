@@ -1,0 +1,21 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        // For these launch configurations to work, you need to setup godot.csharp.executablePath vscode variable.
+        {
+            "name": "Debug App",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "Build",
+            "program": "${config:godot.csharp.executablePath}",
+            "args": [],
+            "cwd": "${workspaceFolder}/project",
+            "stopAtEntry": false,
+            "justMyCode": true,
+            "console": "integratedTerminal"
+        },
+    ]
+}

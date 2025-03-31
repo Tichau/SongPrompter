@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://xa5e21x6vjsx"]
+
+[ext_resource type="Script" uid="uid://d2hb8a03tnhjc" path="res://ui/song/Verse.cs" id="1_hokja"]
+
+[node name="VBoxContainer" type="VBoxContainer" node_paths=PackedStringArray("info", "lyrics")]
+offset_right = 333.0
+offset_bottom = 232.0
+script = ExtResource("1_hokja")
+info = NodePath("Infos")
+lyrics = NodePath("Label")
+
+[node name="Infos" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[i]{0}  [font_size=10]{1}[/font_size][/i]"
+fit_content = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "I'm gonna fight 'em off
+A seven nation army couldn't hold me back
+They're gonna rip it off
+Taking their time right behind my back
+And I'm talkin' to myself at night
+Because I can't forget
+Back and forth through my mind
+Behind a cigarette"

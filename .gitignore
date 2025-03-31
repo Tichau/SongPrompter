@@ -1,5 +1,7 @@
-.vs/
-*.user
+*.old
 
-bin/
-obj/
+# Godot 4+ specific ignores
+project/.godot/
+project/android/
+
+project/.build/

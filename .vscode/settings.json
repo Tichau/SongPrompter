@@ -1,0 +1,11 @@
+{
+    "cSpell.words": [
+        "Godot",
+        "Setlist",
+        "setlists",
+        "Tweener"
+    ], 
+    "files.exclude": {
+        "**/*.uid": true
+    },
+}

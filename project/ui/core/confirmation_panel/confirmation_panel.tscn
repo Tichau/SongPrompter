@@ -1,0 +1,72 @@
+[gd_scene load_steps=2 format=3 uid="uid://sjv7d4v080jv"]
+
+[ext_resource type="Script" uid="uid://blxf0vspk1a30" path="res://ui/core/confirmation_panel/ConfirmationPanel.cs" id="1_ui481"]
+
+[node name="ConfirmationPanel" type="Control" node_paths=PackedStringArray("titlePanel", "dialogText", "okButton", "cancelButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ui481")
+titlePanel = NodePath("CenterContainer/PanelContainer/HBoxContainer2/Title")
+dialogText = NodePath("CenterContainer/PanelContainer/HBoxContainer2/DialogueText")
+okButton = NodePath("CenterContainer/PanelContainer/HBoxContainer2/buttons/OKButton")
+cancelButton = NodePath("CenterContainer/PanelContainer/HBoxContainer2/buttons/CancelButton")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.09, 0.09, 0.09, 0.513726)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CenterContainer/PanelContainer/HBoxContainer2"]
+auto_translate_mode = 2
+layout_mode = 2
+text = "Title"
+horizontal_alignment = 1
+
+[node name="DialogueText" type="RichTextLabel" parent="CenterContainer/PanelContainer/HBoxContainer2"]
+auto_translate_mode = 2
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+bbcode_enabled = true
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, [b]adipiscing nec[/b], ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi."
+fit_content = true
+
+[node name="buttons" type="HBoxContainer" parent="CenterContainer/PanelContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="OKButton" type="Button" parent="CenterContainer/PanelContainer/HBoxContainer2/buttons"]
+auto_translate_mode = 2
+layout_mode = 2
+size_flags_horizontal = 6
+text = "OK"
+
+[node name="CancelButton" type="Button" parent="CenterContainer/PanelContainer/HBoxContainer2/buttons"]
+auto_translate_mode = 2
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Cancel"
+
+[connection signal="pressed" from="CenterContainer/PanelContainer/HBoxContainer2/buttons/OKButton" to="." method="OnOkPressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/HBoxContainer2/buttons/CancelButton" to="." method="OnCanceledPressed"]
