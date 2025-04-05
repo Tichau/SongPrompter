@@ -58,6 +58,9 @@ public partial class App : Node
             // Randomize the seed of Godot main RNG.
             GD.Randomize();
 
+            Engine.MaxFps = 30;
+            this.GetWindow().ContentScaleFactor = DisplayServer.ScreenGetDpi() / 170;
+
             DependencyBuilder<ISingleton<App>> dependencyBuilder = new("Bind", this);
 
             dependencyBuilder
