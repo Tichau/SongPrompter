@@ -26,6 +26,8 @@ public partial class MainMenu : Core.UI.Panel
 
         Debug.Assert(this.selectSetlistDialog != null);
         this.selectSetlistDialog.DirSelected += this.OnFileDialogConfirmed;
+
+        Engine.MaxFps = 30;
     }
 
     protected override bool ShouldBeVisible()
