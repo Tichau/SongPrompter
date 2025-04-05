@@ -13,6 +13,8 @@ config_version=5
 config/name="SongPrompter"
 run/main_scene="uid://blgx0pere0er3"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
+boot_splash/bg_color=Color(0.815686, 0.00784314, 0.105882, 1)
+boot_splash/image="uid://dc2sbwyl7yfli"
 config/icon="res://icon.svg"
 
 [display]
