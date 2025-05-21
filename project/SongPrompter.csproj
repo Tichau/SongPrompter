@@ -3,5 +3,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <Nullable>enable</Nullable>
+    <Title>SongPrompter</Title>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 </Project>
