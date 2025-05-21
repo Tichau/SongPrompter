@@ -7,7 +7,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uc3x2"]
 
-[node name="Song" type="ColorRect" node_paths=PackedStringArray("swipeContainer", "scrollContainer", "playButton", "title", "artist", "bpm", "signature", "key", "songNumber", "verseContainer", "beatFeedback", "barNumber")]
+[node name="Song" type="ColorRect" node_paths=PackedStringArray("swipeContainer", "scrollContainer", "playButton", "title", "artist", "bpm", "signature", "key", "songNumber", "transition", "verseContainer", "beatFeedback", "barNumber")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -25,6 +25,7 @@ bpm = NodePath("MarginContainer/ScrollContainer/VBoxContainer/Infos/Bpm")
 signature = NodePath("MarginContainer/ScrollContainer/VBoxContainer/Infos/Signature")
 key = NodePath("MarginContainer/ScrollContainer/VBoxContainer/Infos/Key")
 songNumber = NodePath("MarginContainer/ScrollContainer/VBoxContainer/Infos/Song")
+transition = NodePath("MarginContainer/ScrollContainer/VBoxContainer/Infos/Transition")
 verseContainer = NodePath("MarginContainer/ScrollContainer/VBoxContainer/Verses")
 verseTemplate = ExtResource("2_3s6jk")
 beatFeedback = NodePath("Beat")
@@ -100,6 +101,10 @@ text = "Key: A"
 [node name="Song" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Infos"]
 layout_mode = 2
 text = "Song: 1/23"
+
+[node name="Transition" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Infos"]
+layout_mode = 2
+text = "Transition: follow up"
 
 [node name="Verses" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2

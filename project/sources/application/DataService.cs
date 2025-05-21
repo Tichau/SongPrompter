@@ -201,6 +201,10 @@ internal partial class SetlistDatabase : ISingleton<App>
                                 song.Key = match.Groups["value"].Value;
                                 break;
 
+                            case "transition":
+                                song.Transition = match.Groups["value"].Value;
+                                break;
+
                             default:
                                 throw new Exception($"Unknown metadata: {match.Groups["key"].Value}");
                         }

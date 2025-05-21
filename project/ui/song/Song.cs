@@ -19,6 +19,7 @@ public partial class Song : Core.UI.Panel
     [Export] private Label? signature;
     [Export] private Label? key;
     [Export] private Label? songNumber;
+    [Export] private Label? transition;
     [Export] private Godot.Container? verseContainer;
     [Export] private PackedScene? verseTemplate;
     
@@ -205,12 +206,13 @@ public partial class Song : Core.UI.Panel
             this.songIndex = this.app.CurrentSongIndex;
             Data.Song song = this.app.CurrentSetlist.Songs[this.songIndex];
 
-            Debug.Assert(this.title != null && this.artist != null && this.bpm != null && this.signature != null && this.key != null && this.songNumber != null && this.verseContainer != null && this.verseTemplate != null);
+            Debug.Assert(this.title != null && this.artist != null && this.bpm != null && this.signature != null && this.key != null && this.songNumber != null && this.transition != null && this.verseContainer != null && this.verseTemplate != null);
             this.title.Text = song.Name;
             this.artist.Text = song.Artist;
             this.bpm.Text = $"{song.Bpm} bpm";
             this.signature.Text = $"Signature: {song.BeatPerBar}/{song.BeatSubdivision}";
             this.key.Text = $"Key: {song.Key}";
+            this.transition.Text = string.IsNullOrEmpty(song.Transition) ? string.Empty : $"Transition: {song.Transition}";
             this.songNumber.Text = $"Song: {this.songIndex + 1}/{this.app.CurrentSetlist.Songs.Length}";
 
             this.verseContainer.QueueFreeChildren();

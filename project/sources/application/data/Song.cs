@@ -10,5 +10,6 @@ public partial class Song
     public int BeatSubdivision;
     
     public string Key;
+    public string Transition;
     public Verse[] Verses;
 }
